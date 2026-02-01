@@ -16,34 +16,6 @@
               <button label="ja" class="entscheidungsButtons" (click)="AbfrageLoeschen(benutzer.id)">Ja</button>
             </div>
           </p-dialog>
-          <p-dialog class="funfsex" header="Wirklich Benutzer löschen" [modal]="true" [(visible)]="LoeschenAbfrageSichtbarkeit" [style]="{ width: '27rem' }">
-            <div class="formContainer">
-              <div class="boxbox">
-                <div class="headingCenter">
-                  <h2>Benutzer erstellen</h2>
-                </div>
-                <p-inputgroup>
-                  <p-inputgroup-addon>
-                    <i class="pi pi-user"></i>
-                  </p-inputgroup-addon>
-                  <input pInputText [(ngModel)]="personenModelWritableSignal().Name" maxlength="20" placeholder="Name" />
-                </p-inputgroup>
-                <p-inputgroup>
-                  <p-inputgroup-addon>
-                    <i class="pi pi-graduation-cap"></i>
-                  </p-inputgroup-addon>
-                  <p-select [options]="lehrjahre" [(ngModel)]="personenModelWritableSignal().Lehrjahr" [checkmark]="true"  [showClear]="true" placeholder="Wähle das Lehrjahr" class="w-full md:w-56" />
-                </p-inputgroup>
-                <p-inputgroup>
-                  <p-inputgroup-addon>
-                    <i class="pi pi-calendar"></i>
-                  </p-inputgroup-addon>
-                  <textarea rows="5" [(ngModel)]="personenModelWritableSignal().LieblingsZitat" cols="30" pTextarea placeholder="Lieblings Zitat der Person"></textarea>
-                </p-inputgroup>
-                <p-button id="submitButton" label="Erstellen" (click)="ErstelleBenutzer()"/>
-              </div>
-            </div>
-          </p-dialog>
         </div>
       }
     </div>
@@ -59,7 +31,7 @@
           <p-inputgroup-addon>
             <i class="pi pi-user"></i>
           </p-inputgroup-addon>
-          <input pInputText [(ngModel)]="personenModelWritableSignal().Name" maxlength="20" placeholder="Name" />
+          <input pInputText [invalid]="!personenModelWritableSignal().Name" [(ngModel)]="personenModelWritableSignal().Name" maxlength="20" placeholder="Name"/>
         </p-inputgroup>
         <p-inputgroup>
           <p-inputgroup-addon>
@@ -73,7 +45,12 @@
           </p-inputgroup-addon>
           <textarea rows="5" [(ngModel)]="personenModelWritableSignal().LieblingsZitat" cols="30" pTextarea placeholder="Lieblings Zitat der Person"></textarea>
         </p-inputgroup>
-        <p-button id="submitButton" label="Erstellen" (click)="ErstelleBenutzer()"/>
+        <p-button id="submitButton" [disabled]="!(personenModelWritableSignal().Name && !avatarPrieview()?.includes(keyWord))" label="Erstellen" (click)="ErstelleBenutzer()"/>
+        @if(!personenModelWritableSignal().Name || avatarPrieview()?.includes(keyWord) ) {
+          <div class="validatorTextContainer">
+          <small class="validatorText">Bitte fülle das Formular aus!</small>
+          </div>
+        }
       </div>
     </div>
   </div>

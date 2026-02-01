@@ -10,14 +10,12 @@ import {Textarea} from 'primeng/textarea';
 import {HttpClient} from '@angular/common/http';
 import {Button} from 'primeng/button';
 import {FileUpload} from 'primeng/fileupload';
-import {NgClass} from '@angular/common';
-import {Scroller} from 'primeng/scroller';
 import {Dialog} from 'primeng/dialog';
 import {test} from 'vitest';
 
 interface PersonenModel {
   Id: number;
-  Name: string;
+  Name: string | undefined;
   Lehrjahr: number;
   LieblingsZitat: string;
   AvatarFileName : string;
@@ -32,7 +30,7 @@ interface SuchePersonenModel {
 @Component({
   selector: 'app-benutzer',
   imports: [ScrollPanelModule,
-    DatePickerModule, FormsModule, InputText, Select, InputGroup, InputGroupAddon, Textarea, Button, FileUpload, Scroller, NgClass, Dialog],
+    DatePickerModule, FormsModule, InputText, Select, InputGroup, InputGroupAddon, Textarea, Button, FileUpload, Dialog],
   templateUrl: './benutzer.html',
   styleUrl: './benutzer.css',
 })
@@ -41,7 +39,7 @@ export class Benutzer {
 
   personenModelWritableSignal = signal<PersonenModel>({
     Id: 0,
-    Name: '-',
+    Name: '' ,
     Lehrjahr: 1,
     LieblingsZitat: '',
     AvatarFileName: '',
@@ -57,8 +55,9 @@ export class Benutzer {
 
   items = signal<PersonenModel[]>([]);
 
-  gesuchteBenutzer = signal<SuchePersonenModel[]>([]);
+  keyWord = "https://www.shutterstock.com/image-vector/default-avatar-social-media-display-600nw-2632690107.jpg";
 
+  gesuchteBenutzer = signal<SuchePersonenModel[]>([]);
   ngOnInit(): void {
     this.HoleExistierendeBenutzer();
   }
@@ -67,6 +66,7 @@ export class Benutzer {
       this.items.set(res);
     });
   }
+
   public onAvatarSelect (event: any) {
     const file = event.files[0];
     this.personenModelWritableSignal().AvatarFileName = file.name;
@@ -124,11 +124,12 @@ export class Benutzer {
     this.avatarFile.set(formData);
   }
   public ErstelleBenutzer() {
+
     this.UploadAvatarFile();
     this.httpClient.post("http://localhost:5202/benutzerHinzufuegen", this.personenModelWritableSignal()).subscribe();
     this.personenModelWritableSignal.set({
       Id: 0,
-      Name: '-',
+      Name: '',
       Lehrjahr: 1,
       LieblingsZitat: '',
       AvatarFileName: '',
@@ -137,6 +138,4 @@ export class Benutzer {
   private UploadAvatarFile() {
     this.httpClient.post("http://localhost:5202/avatarBildUpload", this.avatarFile()).subscribe();
   }
-
-  protected readonly test = test;
 }
