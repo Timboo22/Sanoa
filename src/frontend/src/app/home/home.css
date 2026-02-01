@@ -52,7 +52,7 @@
     border-color: #42005a;
 
   }#neuesZitatInput:enabled {
-    border-color: #42005a; !important;
+    border-color: #42005a !important;
   }
 
   #neuesZitatInput:focus {

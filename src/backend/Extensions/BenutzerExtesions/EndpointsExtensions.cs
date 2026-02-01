@@ -18,6 +18,10 @@ public static class EndpointsExtensions
         
         app.MapPost("/LoescheBenutzer",
             (LoeschbarerNutzer benutzer, IBenutzerService benutzerService) => { benutzerService.BenutzerLoeschen(benutzer); });   
+        
+        
+        app.MapPost("/benutzerHinzufuegen",
+            (Benutzers.Models.Benutzer benutzer, IBenutzerService benutzerService) => { benutzerService.BenutzerHinzufuegen(benutzer); });
     }
 
     public static void AvartarBenutzer(this WebApplication app)
