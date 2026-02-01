@@ -1,11 +1,9 @@
-
 <div class="parent">
   <div class="div1">
   </div>
   <div class="div6">
-    <div class="input-icon-wrapper">
-      <input id="neuesZitatInput"  type="text" [(ngModel)]="zitat().zitateName" pInputText placeholder="Erstelle Zitat..." class="w-36 input-with-icon"/>
-      <a class="pi pi-arrow-right input-icon" (click)="ErstelleZitat()"></a>
+    <div class="input-row"><input id="neuesZitatInput" type="text" [(ngModel)]="zitat().zitateName" pInputText placeholder="Erstelle Zitat..." class="input-flex"/>
+      <span class="pi pi-arrow-right input-action" (click)="ErstelleZitat()"></span>
     </div>
   </div>
   <div class="div14">
@@ -42,7 +40,7 @@
     </div>
 
     <div class="topZitate">
-      <div class="text-center">Am meisten Zitate 📈 </div>
+      <div class="text-center">Am meisten Zitate 📈</div>
       <div class="table-center">
         <p-table [value]="[{}]" class="no-border small-text ">
           <ng-template pTemplate="header">
@@ -74,21 +72,22 @@
     </div>
   </div>
   <div class="div17">
-         @for (zitatee of gefundeneZitate(); track zitatee.id)
-          {
-            @if(zitatee.id % 2 == 1) {
-              <div class="container">
-                <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3975.png&w=350&h=254" alt="Avatar">
-                <p>{{zitatee.zitateName}}</p>
-              </div>
-            } @else {
-              <div class="container">
-                <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3975.png&w=350&h=254" alt="Avatar" class="right">
-                <p>{{zitatee.zitateName}}</p>
-              </div>
-            }
+    @for (zitatee of aktuelleZitate(); track zitatee.id) {
+      @if (zitatee.id % 2 == 1) {
+        <div class="container">
+          <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3975.png&w=350&h=254"
+               alt="Avatar">
+          <p>{{ zitatee.zitateName }}</p>
+        </div>
+      } @else {
+        <div class="container">
+          <img src="https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3975.png&w=350&h=254"
+               alt="Avatar" class="right">
+          <p>{{ zitatee.zitateName }}</p>
+        </div>
+      }
 
-          }
+    }
 
   </div>
 </div>

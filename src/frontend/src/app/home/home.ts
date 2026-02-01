@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component, computed, signal} from '@angular/core';
 import {InputText} from 'primeng/inputtext';
 import "primeicons/primeicons.css";
 import {TableModule} from 'primeng/table';
@@ -27,6 +27,9 @@ export class Home {
 
   gefundeneZitate = signal<Zitat[]>([]);
 
+  aktuelleZitate = computed(() =>
+    this.gefundeneZitate().slice(-7)
+  );
   constructor(private httpClient: HttpClient) {};
 
   public ngOnInit() {
@@ -46,7 +49,6 @@ export class Home {
       this.gefundeneZitate.set(res);
     });
   }
-
 
 
 }

@@ -5,7 +5,7 @@
 
 .parent {
     margin-top: 0;
-    height: 100%;
+    height: 100vh;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -46,13 +46,15 @@
     width: 20vw;
     max-width: 1000px;
     margin: 0 auto;
-    display: block;}
+    display: block;
+  }
+
 
     #neuesZitatInput:hover {
     border-color: #42005a;
 
   }#neuesZitatInput:enabled {
-    border-color: #42005a !important;
+    border-color: #42005a; !important;
   }
 
   #neuesZitatInput:focus {
@@ -61,19 +63,37 @@
 
   .input-icon-wrapper {
     position: relative;
+    display: inline-block;
   }
 
   .input-icon {
     position: absolute;
     right: 0.75rem;
-    top: 50%;
+    top: 200%;
     transform: translateY(-50%);
   }
-
   .input-icon:hover {
     background-color: rgba(66, 0, 90, 0.4);
     border-radius: 20px;
     padding: 2px;
+  }
+
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 5rem;
+  }
+
+  .input-flex {
+    width: 18rem;
+  }
+
+  .input-action {
+    cursor: pointer;
+    font-size: 1.4rem;
+    user-select: none;
+    color: black;
   }
 
   .topZitate {
