@@ -1,14 +1,14 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using SanoaAPI;
 using SanoaAPI.Benutzer.Avatar;
 using SanoaAPI.Benutzer.Avatar.Services;
 using SanoaAPI.Benutzer.Models;
-using SanoaAPI.Benutzers.Models;
 using SanoaAPI.Benutzers.Services;
 using SanoaAPI.Benutzers.Services.Contracts;
 using SanoaAPI.Extensions;
+using SanoaAPI.Extensions.BenutzerExtesions;
+using SanoaAPI.Extensions.ZitateExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,35 +47,9 @@ app.UseStaticFiles(new StaticFileOptions {
 
 app.UseHttpsRedirection();
 
-app.MapPost("/benutzerHinzufuegen",
-    (Benutzer benutzer, IBenutzerService benutzerService) => { benutzerService.BenutzerHinzufuegen(benutzer); });
-
-app.MapPost("/avatarBildUpload",
-    ([FromForm] IFormFile file, IBenutzerAvatarService benutzerAvatarService) => {
-        benutzerAvatarService.SpeicherBildImOrdner(file);
-    }).DisableAntiforgery();
-
-app.MapPost("/LoescheBenutzer",
-    (LoeschbarerNutzer benutzer, IBenutzerService benutzerService) => { benutzerService.BenutzerLoeschen(benutzer); });
-
-app.MapPost("/erstelleZitat", async (Zitate zitat, ContextDb db) => {
-        db.Zitate.Add(zitat);
-        await db.SaveChangesAsync();
-
-        return Results.Created($"/zitat/{zitat.Id}", zitat);
-    })
-    .DisableAntiforgery();
-
-app.MapGet("/holeExistierendenNutzer", (ContextDb db) => db.Benutzer.ToList());
-
-app.MapGet("/SuchBenutzer",
-    (string suchbegriff, ContextDb db) => {
-        return db.Benutzer.Where(s => s.Name.Contains(suchbegriff)).Take(3).ToList();
-    }).DisableAntiforgery();
-
-//Hihi kleiner Hackerman war hier um Git zu Testen
-
-app.MapGet("/holeZitate", (ContextDb db) => db.Zitate.ToList());
+app.BenutzerEndpoints();
+app.AvartarBenutzer();
+app.ZitateEndpoints();
 
 app.UseStaticFiles();
 
