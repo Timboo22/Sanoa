@@ -66,7 +66,8 @@ ng serve
 
 - **.NET SDK 10**
 - **Angular CLI**
-- Git
+- Gi
+- Docker Desktop
 
 ---
 
