@@ -18,6 +18,7 @@ The project focuses on a clean architecture, fast APIs, and a modern Angular set
 - Signals for state management
 - HttpClient for API communication
 - Modern template syntax (`@for`, `@if`)
+- Tailwind
 
 ---
 
