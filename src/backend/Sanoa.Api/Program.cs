@@ -41,7 +41,7 @@ if (app.Environment.IsDevelopment()) {
 app.UseCors("AllowAngular");
 
 app.UseStaticFiles(new StaticFileOptions {
-    FileProvider = new PhysicalFileProvider(@"D:\AvatarSenoa"),
+    FileProvider = new PhysicalFileProvider(@"C:\Users\timlu\Documents\Sanoa.PictureSave"),
     RequestPath = "/avatars"
 });
 

@@ -8,6 +8,8 @@ import {MessageService} from 'primeng/api';
 import {Toast} from 'primeng/toast';
 import {Select} from 'primeng/select';
 import {JsonPipe, NgOptimizedImage} from '@angular/common';
+import {Textarea} from 'primeng/textarea';
+import {Button} from 'primeng/button';
 
 interface Zitat {
   id: number;
@@ -33,7 +35,9 @@ interface PersonenModel {
     Toast,
     Select,
     JsonPipe,
-    NgOptimizedImage
+    NgOptimizedImage,
+    Textarea,
+    Button
   ],
   templateUrl: './home.html',
   styleUrl: './home.css',

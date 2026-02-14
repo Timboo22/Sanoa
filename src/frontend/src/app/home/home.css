@@ -1,185 +1,27 @@
-  html, body {
-   margin: auto;padding: 0;
-   height: 100%;
-  }
-
 .parent {
-    margin-top: 0;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    padding: 0;
-  }
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  padding: 1rem;
+}
+.parent .createContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  align-self: center;
+  padding: 1.5rem;
+  margin-top: 15%;
+}
 
-  .div1 {
-    margin: 0;
-    padding: 0;
-    grid-row: span 5 / span 5;
-    flex: 0 0 300px;
-  }
+:host ::ng-deep p-button button {
+  width: 100%;
+  padding: 0.5rem;
+}
 
-  .div6 {
-    margin-top: 130px;
-    display: flex;
-    margin-left: 33vh;
-    grid-column: span 4 / span 4;
-    grid-column-start: 2;
-    grid-row-start: 5;
-  }
-
-  .div14 {
-    grid-row: span 3 / span 3;
-    grid-column-start: 5;
-    grid-row-start: 1;
-  }
-
-  .div17 {
-    margin-right: 140px;
-    grid-column: span 3 / span 3;
-    grid-row: span 4 / span 4;
-    grid-column-start: 2;
-    grid-row-start: 1;
-  }
-
-  #neuesZitatInput {
-    width: 20vw;
-    max-width: 1000px;
-    margin: 0 auto;
-    display: block;
-    border-color: lightgray;
-  }
-    #neuesZitatInput:hover {
-    border-color: #42005a;
-  }
-
-  #neuesZitatInput:focus {
-    box-shadow: 0 4px 12px rgba(66, 0, 90, 0.3);
-  }
-
-  .input-icon-wrapper {
-    position: relative;
-    display: inline-block;
-  }
-
-  .input-icon {
-    position: absolute;
-    right: 0.75rem;
-    top: 200%;
-    transform: translateY(-50%);
-  }
-  .input-icon:hover {
-    background-color: rgba(66, 0, 90, 0.4);
-    border-radius: 20px;
-    padding: 2px;
-  }
-
-  .input-row {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 5rem;
-  }
-
-  .input-flex {
-    width: 18rem;
-  }
-
-  .input-action {
-    cursor: pointer;
-    font-size: 1.4rem;
-    user-select: none;
-    color: black;
-  }
-
-  .topZitate {
-    padding: 5px;
-    box-shadow: 2px 3px 8px 2px rgba(66, 0, 90, 0.3);
-    border-radius: 10px;
-  }
-
-  .no-border.p-datatable {
-    border: none;
-    margin-bottom: 24px;
-  }
-
-  .no-border .p-datatable-thead > tr > th,
-  .no-border .p-datatable-tbody > tr > td {
-    border: none;
-  }
-
-  .text-center  {
-    margin-top: 10px;
-    text-align: center;
-  }
-
-  .table-center {
-    display: flex;
-    justify-content: center;
-  }
-
-  .containerUngerade {
-    display: flex;
-    border: 2px solid #dedede;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
-    gap: 300px;
-    flex-direction: row-reverse;
-  }
-
-  .containerGerade {
-    display: flex;
-    border: 2px solid #dedede;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px 0;
-    gap: 300px;
-    flex-direction: row;
-  }
-
-
-  .containerUngerade::after,
-  .containerGerade::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-
-
-  .containerUngerade img,
-  .containerGerade img {
-    max-width: 60px;
-    width: 100%;
-    border-radius: 50%;
-  }
-
-  :host ::ng-deep .p-select {
-    display: flex;
-    width: 93%;
-    margin-bottom: 10px ;
-  }
-
-  .p-select.p-focus,
-  .p-select:hover {
-    outline: none !important;
-    box-shadow: none !important;
-    border-color: #42005a !important;
-  }
-
-  :host ::ng-deep .p-select-option:hover   {
-    background-color: rgba(134, 1, 186, 0.6);
-    color: #fff ;
-  }
-
-  .avatarFlex {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-
-
-
-
+.containerZitate {
+  display: flex;
+  flex-direction: column;
+}

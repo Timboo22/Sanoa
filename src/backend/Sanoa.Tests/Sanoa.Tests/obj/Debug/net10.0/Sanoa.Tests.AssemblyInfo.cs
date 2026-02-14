@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Sanoa.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3580a95138a9d39c7ddd60daa02f584e4e3db26a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+634f74173b963d88a593349930021c89b5024b1d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Sanoa.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Sanoa.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,18 +1,10 @@
-<div class="sidebar">
-  <div class="center">Sanoa</div>
-  <ul class="menu">
-    <li routerLink="Home" class="menu-item">
-      <i class="pi pi-home"></i>
-      <a>Home</a>
-    </li>
-    <li routerLink="Benutzer" class="menu-item">
-      <i class="pi pi-user"></i>
-      <a>Benutzer</a>
-    </li>
-  </ul>
+<div class="w-full h-screen flex flex-row">
+  <div class="w-[10%] min-w-[15em] h-full py-8 ps-8 pe-4 pl-[0]">
+    <app-navbar></app-navbar>
+  </div>
+  <div class="h-full py-8 ps-4 pe-8 grow">
+    <p-card class="h-full main-content">
+      <router-outlet/>
+    </p-card>
+  </div>
 </div>
-
-<main class="app-content">
-  <router-outlet></router-outlet>
-</main>
-
