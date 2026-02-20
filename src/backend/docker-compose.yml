@@ -1,0 +1,33 @@
+version: '3.9'
+name: Sanoa
+services:
+  db:
+    image: postgres:16
+    container_name: database
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: identity
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    container_name: app
+    restart: always
+    build:
+      context: ./backend.Api
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Identity=Host=database;Port=5432;Database=identity;Username=user;Password=password
+    ports:
+      - "5000:8080"
+    volumes:
+      - ./backend.Api:/src
+volumes:
+  postgres_data:
