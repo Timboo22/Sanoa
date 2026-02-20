@@ -17,7 +17,7 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["backend/Sanoa.Api.csproj", "./"]
+COPY  ["Sanoa.Api.csproj", "./"]
 RUN dotnet restore "Sanoa.Api.csproj"
 COPY backend/ . 
 
